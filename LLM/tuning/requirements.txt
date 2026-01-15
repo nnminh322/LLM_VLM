@@ -1,2 +1,5 @@
 unsloth==2026.1.2
 trl==0.24.0
+torch
+abc
+typing
