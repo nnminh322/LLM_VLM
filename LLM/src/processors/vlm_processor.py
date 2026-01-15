@@ -5,8 +5,8 @@ from transformers import AutoTokenizer
 
 
 # class VLMProcessor(BaseProcessor):
-    # def __init__(self, model_id: str, config: Dict):
-    #     super().__init__(model_id, config)
+    # def __init__(self, model_name: str, config: Dict):
+    #     super().__init__(model_name, config)
 
     # def setup(self):
     #     model_name = self.config["model_name"]

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from LLM.src.core.base_inputs import BaseInput
+from core.base_inputs import BaseInput
 from typing import List, Dict, TypeVar, Generic, Optional
 from transformers import PreTrainedTokenizerBase, ImageProcessingMixin
 import torch
@@ -8,8 +8,8 @@ I = TypeVar("I", bound=BaseInput)
 
 
 class BaseProcessor(Generic[I], ABC):
-    def __init__(self, model_id: str, config: Dict):
-        self.model_id = model_id
+    def __init__(self, model_name: str, config: Dict):
+        self.model_name = model_name
         self.config = config
         self.tokenizer = Optional[PreTrainedTokenizerBase]
         self.image_processor = Optional[ImageProcessingMixin]
