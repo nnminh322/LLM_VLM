@@ -4,7 +4,7 @@ class Registry:
     @classmethod
     def register(cls, catergory: str, name: str):
         def decorator(wrapper_class):
-            if wrapper_class not in cls._REGISTIES:
+            if catergory not in cls._REGISTIES:
                 raise ValueError(f"wrapper_class: {wrapper_class} not in categories!")
             cls._REGISTIES[catergory][name] = wrapper_class
             return wrapper_class

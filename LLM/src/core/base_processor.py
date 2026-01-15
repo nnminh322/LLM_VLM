@@ -11,8 +11,8 @@ class BaseProcessor(Generic[I], ABC):
     def __init__(self, model_name: str, config: Dict):
         self.model_name = model_name
         self.config = config
-        self.tokenizer = Optional[PreTrainedTokenizerBase]
-        self.image_processor = Optional[ImageProcessingMixin]
+        self.tokenizer: Optional[PreTrainedTokenizerBase] = None
+        self.image_processor: Optional[ImageProcessingMixin] = None
 
     @abstractmethod
     def setup(self):
