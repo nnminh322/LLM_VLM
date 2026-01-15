@@ -12,7 +12,7 @@ class BaseProcessor(ABC):
 
     @abstractmethod
     def setup(self):
-        # set tokenizer and image processor (maybe from huggingface
+        # set tokenizer and image processor (maybe from huggingface)
         pass
 
     @abstractmethod
