@@ -6,13 +6,13 @@ class BaseTuner(ABC):
         self.config = config
 
     @abstractmethod
-    def apply(self, model):
+    def apply(self, model, target_module):
         """injection LoRA/QLoRA or Freeze config"""
         pass
 
-    @abstractmethod
-    def wrap_for_training(self, model):
-        """
-        something for RL training... idk:))
-        """
-        pass
+    # @abstractmethod
+    # def wrap_for_training(self, model):
+    #     """
+    #     something for RL training... idk:))
+    #     """
+    #     pass

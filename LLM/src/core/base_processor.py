@@ -1,9 +1,12 @@
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional
+from LLM.src.core.base_inputs import BaseInput
+from typing import List, Dict, Union, TypeVar, Generic
 import torch
 
+I = TypeVar("I", bound=BaseInput)
 
-class BaseProcessor(ABC):
+
+class BaseProcessor(Generic[I], ABC):
     def __init__(self, model_id: str, config: Dict):
         self.model_id = model_id
         self.config = config
@@ -16,18 +19,13 @@ class BaseProcessor(ABC):
         pass
 
     @abstractmethod
-    def processes(
-        self,
-        messages: List[Dict[str, str]],
-        image: Optional[List[Any]] = None,
-        max_length: Optional[int] = None,
-    ) -> Dict[str, torch.Tensor]:
-        pass 
-    
+    def processes(self, inputs: I) -> Dict[str, torch.Tensor]:
+        pass
+
     @abstractmethod
     def decode(self, token_ids):
         pass
-    
+
     def apply_chat_tempplate(self, messages: List[Dict[str, str]]):
         # will complete later
         pass
