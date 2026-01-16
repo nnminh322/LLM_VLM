@@ -1,0 +1,10 @@
+sft_config:
+  output_dir: "outputs"
+  batch_size: 2
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0002
+  max_steps: 60
+  logging_steps: 1
+  dataset_text_field: "text"
+  max_length: 2048
+  packing: false

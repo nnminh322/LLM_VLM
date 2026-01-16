@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
-from typing import Literal,Optional
+from typing import Literal,Optional, List, Dict, Any
 import torch.nn as nn
+import torch
 
 class BaseModel(ABC):
     def __init__(self, config):
@@ -14,10 +15,9 @@ class BaseModel(ABC):
         pass
 
     @abstractmethod
-    def get_target_module(self):  # Get layer module for apply LoRA/QLoRa
+    def get_target_modules(self) -> List[str]:  # Get layer module for apply LoRA/QLoRa
         pass
-
-    # @abstractmethod
-    # def predict(self, records):
-    #     # Using for inference
-    #     pass
+    
+    @abstractmethod
+    def predict(self, records: Dict[str, torch.Tensor], **kwargs: Any) -> Any:
+        pass

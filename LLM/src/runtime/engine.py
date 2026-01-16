@@ -22,8 +22,7 @@ def forward_infer(
         generate_kwargs = {}
     if model.model is None:
         raise RuntimeError("Model is None. Call .load() first.")
-    m: Any = model.model
-    return m.generate(**batch, **generate_kwargs)
+    return model.predict(records=batch, kwargs=generate_kwargs)
 
 
 def decode(processor: BaseProcessor, outputs):
@@ -44,4 +43,5 @@ class Engine:
         output = forward_infer(
             model=self.model, batch=batch, generate_kwargs=generate_kwargs
         )
-        return output
+        # return output
+        return self.processor.decode(output)

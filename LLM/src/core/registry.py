@@ -2,11 +2,11 @@ class Registry:
     _REGISTRIES = {"models": {}, "datasets": {}, "tuners": {}, "tasks": {}}
 
     @classmethod
-    def register(cls, catergory: str, name: str):
+    def register(cls, category: str, name: str):
         def decorator(wrapper_class):
-            if catergory not in cls._REGISTRIES:
+            if category not in cls._REGISTRIES:
                 raise ValueError(f"wrapper_class: {wrapper_class} not in categories!")
-            cls._REGISTRIES[catergory][name] = wrapper_class
+            cls._REGISTRIES[category][name] = wrapper_class
             return wrapper_class
 
         return decorator

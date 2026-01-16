@@ -1,8 +1,8 @@
+from typing import Any, Dict
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from core.base_model import BaseModel
 from core.registry import Registry
-from utils.load_config import load_llm_config
 
 
 @Registry.register("models", "qwen")
@@ -40,3 +40,20 @@ class QwenModel(BaseModel):
                 trust_remote_code=True,
                 attn_implementation="flash_attention_2",
             )
+
+    def predict(self, records: Dict[str, torch.Tensor], **kwargs: Any) -> Any:
+        assert self.model is not None, "Model must be loaded before calling"
+        m: Any = self.model
+        return m.generate(**records, **kwargs)
+    
+    def get_target_modules(self):
+        target_modules = [
+            "q_proj",
+            "k_proj",
+            "v_proj",
+            "o_proj",
+            "gate_proj",
+            "up_proj",
+            "down_proj",
+        ]
+        return target_modules

@@ -2,9 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class BaseTrainer(ABC):
-    def __init__(self, model, args, train_dataset, eval_dataset=None):
+    def __init__(self, model, config, train_dataset, eval_dataset=None):
         self.model = model
-        self.args = args
+        self.config = config
         self.train_dataset = train_dataset
         self.eval_dataset = eval_dataset
 

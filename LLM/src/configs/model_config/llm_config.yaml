@@ -1,5 +1,8 @@
 qwen:
   model_name: "Qwen/Qwen3-4B-Instruct-2507"
 
+unsloth_qwen:
+  model_name: "Qwen/Qwen3-4B-Instruct-2507"
+
 llama:
   model_name: "meta-llama/Llama-3.1-8B"

@@ -6,7 +6,7 @@ class BaseTuner(ABC):
         self.config = config
 
     @abstractmethod
-    def apply(self, model, target_module):
+    def apply(self, wrapper_model, target_modules):
         """injection LoRA/QLoRA or Freeze config"""
         pass
 
