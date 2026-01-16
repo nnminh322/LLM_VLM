@@ -1,10 +1,11 @@
 from abc import ABC, abstractmethod
-from typing import Literal
+from typing import Literal,Optional
+import torch.nn as nn
 
 class BaseModel(ABC):
     def __init__(self, config):
         self.config = config
-        self.model = None
+        self.model: Optional[nn.Module] = None
         # self.tokenizer = None
 
     @abstractmethod

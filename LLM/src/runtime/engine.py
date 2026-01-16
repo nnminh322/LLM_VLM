@@ -10,6 +10,7 @@ def preprocess(processor: BaseProcessor, inputs: BaseInput):
 
 
 def forward_train(model: BaseModel, batch: Dict[str, torch.Tensor]):
+    assert model.model is not None, "Model must be loaded before calling"
     return model.model(**batch)
 
 
@@ -19,7 +20,10 @@ def forward_infer(
 ):
     if generate_kwargs is None:
         generate_kwargs = {}
-    return model.model.generate(**batch, **generate_kwargs)
+    if model.model is None:
+        raise RuntimeError("Model is None. Call .load() first.")
+    m: Any = model.model
+    return m.generate(**batch, **generate_kwargs)
 
 
 def decode(processor: BaseProcessor, outputs):
