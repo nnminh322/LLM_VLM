@@ -1,8 +1,7 @@
-from typing import Any, Dict, List
+from typing import Dict
 from core.base_processor import BaseProcessor
 from core.base_inputs import TextInput
 from transformers import AutoTokenizer
-
 
 class LLMProcessor(BaseProcessor[TextInput]):
     def __init__(self, model_name: str, config: Dict):
@@ -29,5 +28,5 @@ class LLMProcessor(BaseProcessor[TextInput]):
 
     def decode(self, token_ids):
         if self.tokenizer is None:
-            raise RuntimeError("Tokenizer is None.")
+            raise RuntimeError("Tokenizer is None.") 
         return self.tokenizer.decode(token_ids=token_ids, skip_special_tokens=True)

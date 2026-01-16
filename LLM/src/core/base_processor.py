@@ -2,7 +2,6 @@ from abc import ABC, abstractmethod
 from core.base_inputs import BaseInput
 from typing import List, Dict, TypeVar, Generic, Optional, Any
 from transformers import PreTrainedTokenizerBase, ImageProcessingMixin
-import torch
 
 I = TypeVar("I", bound=BaseInput)
 
@@ -20,8 +19,8 @@ class BaseProcessor(Generic[I], ABC):
         pass
 
     @abstractmethod
-    # def processes(self, inputs: I) -> Dict[str, torch.Tensor]:
-    def processes(self, inputs: I) -> Dict[str, Any]:  # fuk you pylance
+    def processes(self, inputs: I) -> Dict[str, Any]:
+        # def processes(self, inputs: I) -> Dict[str, torch.Tensor]:  # fuk you pylance
         pass
 
     @abstractmethod

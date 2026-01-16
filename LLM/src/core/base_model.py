@@ -17,7 +17,7 @@ class BaseModel(ABC):
     def get_target_module(self):  # Get layer module for apply LoRA/QLoRa
         pass
 
-    @abstractmethod
-    def predict(self, records):
-        # Using for inference
-        pass
+    # @abstractmethod
+    # def predict(self, records):
+    #     # Using for inference
+    #     pass
